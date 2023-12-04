@@ -15,11 +15,19 @@ int main() {
 	std::cout << insertion_sort(arr);
 	print_arr(arr);
 	std::cout << std::endl;
-
+	std::cout << std::endl;
 
 	std::vector<int> data = { 1, 4, 7, 3, 9, 8, 5, 6, 2 };
 	print_arr(data);
 	std::cout << std::endl;
 	std::cout << quick_sort_wrapper(data);
 	print_arr(data);
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	std::vector<int> heap = { 1, 4, 7, 3, 9, 8, 5, 6, 2 };
+	print_arr(heap);
+	std::cout << std::endl;
+	std::cout << heap_sort_wrapper(heap);
+	print_arr(heap);
 }
