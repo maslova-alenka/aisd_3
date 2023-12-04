@@ -5,7 +5,8 @@
 
 #include <vector>
 #include "../include/Stats.h"
-#include "../include/Random.h"
+//#include "../include/Random.h"
+//#include "../include/Analytics.h"
 
 
 // сортировка вставками
@@ -19,7 +20,7 @@ Stats insertion_sort(std::vector<T>& arr) {
         while (j != 0 && arr[j] < arr[j - 1]) {
             stats.comparison_count++;
             std::swap(arr[j - 1], arr[j]);
-            stats.copy_count++;
+            stats.copy_count+=2;
             --j;
         }
     }
@@ -28,40 +29,60 @@ Stats insertion_sort(std::vector<T>& arr) {
 
 
 // быстрая сортировка 
+////template<typename T>
+////int partition(std::vector<T>& arr, int low, int high, Stats& stats) {
+////    int pivot = arr[high];
+////    int ind = low;
+////
+////    for (int i = low; i < high; ++i) {
+////        stats.comparison_count++;
+////        if (arr[i] <= pivot) {
+////            stats.copy_count+=2;
+////            std::swap(arr[i], arr[ind]);
+////            ind++;
+////        }
+////    }
+////
+////    stats.copy_count += 2;
+////    std::swap(arr[ind], arr[high]);
+////
+////    return ind;
+////}
+
 template<typename T>
 int partition(std::vector<T>& arr, int low, int high, Stats& stats) {
     T pivot = arr[high];
     int i = low - 1;
 
-    for (int j = low; j <= high - 1; ++j) {
+    for (size_t j = low; j <= high - 1; ++j) {
         stats.comparison_count++;
         if (arr[j] < pivot) {
             ++i;
             std::swap(arr[i], arr[j]);
-            stats.copy_count++;
+            stats.copy_count+=2;
         }
     }
 
     std::swap(arr[i + 1], arr[high]);
-    stats.copy_count++;
+    stats.copy_count+=2;
 
     return i + 1;
 }
 
 template<typename T>
-void quickSort(std::vector<T>& arr, int low, int high, Stats& stats) {
+void quick_sort(std::vector<T>& arr, int low, int high, Stats& stats) {
     if (low < high) {
         int partition_index = partition(arr, low, high, stats);
 
-        quickSort(arr, low, partition_index - 1, stats);
-        quickSort(arr, partition_index + 1, high, stats);
+        quick_sort(arr, low, partition_index - 1, stats);
+        quick_sort(arr, partition_index + 1, high, stats);
     }
 }
 
 template<typename T>
 Stats quick_sort_wrapper(std::vector<T>& arr) {
     Stats stats;
-    quickSort(arr, 0, arr.size() - 1, stats);
+    quick_sort(arr, 0, arr.size() - 1, stats);
     return stats;
 }
 

@@ -1,3 +1,9 @@
+#include <vector>
+
+
+#include "../include/Stats.h"
+//#include "../include/Random.h"
+#include "../include/Analytics.h"
 #include "../include/Sort.h"
 
 template<typename T>
@@ -30,4 +36,23 @@ int main() {
 	std::cout << std::endl;
 	std::cout << heap_sort_wrapper(heap);
 	print_arr(heap);
+
+	//std::vector<size_t> lens_arr = { 1000, 2000, 3000, 4000, 5000,6000,7000,8000,9000, 10000, 25000, 50000 };
+	//int min = 1;
+	//int max = 50000;
+
+	//std::cout << "Statistics of the reverse array for heap_sort_wrapper" << std::endl;
+	//get_stats_sort(lens_arr, generate_sort_vect, heap_sort_wrapper);
+	//std::cout << "Statistics of the reverse array for heap_sort_wrapper" << std::endl;
+	//get_stats_sort(lens_arr, generate_reverse_sort_vect, heap_sort_wrapper);
+	//std::cout << "Statistics for heap_sort_wrapper" << std::endl;
+	//get_stats(min, max, lens_arr, heap_sort_wrapper);
+
+
+	std::cout << "Ready" << std::endl;
+	
+
+	return 0;
+
 }
+
