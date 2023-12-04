@@ -29,25 +29,6 @@ Stats insertion_sort(std::vector<T>& arr) {
 
 
 // быстрая сортировка 
-////template<typename T>
-////int partition(std::vector<T>& arr, int low, int high, Stats& stats) {
-////    int pivot = arr[high];
-////    int ind = low;
-////
-////    for (int i = low; i < high; ++i) {
-////        stats.comparison_count++;
-////        if (arr[i] <= pivot) {
-////            stats.copy_count+=2;
-////            std::swap(arr[i], arr[ind]);
-////            ind++;
-////        }
-////    }
-////
-////    stats.copy_count += 2;
-////    std::swap(arr[ind], arr[high]);
-////
-////    return ind;
-////}
 
 template<typename T>
 int partition(std::vector<T>& arr, int low, int high, Stats& stats) {

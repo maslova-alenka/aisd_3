@@ -2,9 +2,9 @@
 
 
 #include "../include/Stats.h"
-//#include "../include/Random.h"
 #include "../include/Analytics.h"
 #include "../include/Sort.h"
+#include "../include/Fruits.h"
 
 template<typename T>
 void print_arr(std::vector<T> arr) {
@@ -15,7 +15,19 @@ void print_arr(std::vector<T> arr) {
 
 
 int main() {
-	std::vector<int> arr{ 1, 4, 7, 3, 9, 8, 5, 6, 2 };
+
+	std::vector<std::string> str = { "good", "table", "cake", "umbrella", "map", "jam", "argument", "bottle" };
+	print_arr(str);
+	std::cout << std::endl;
+	insertion_sort(str);
+	print_arr(str);
+	std::cout << std::endl;
+	std::vector<Fruits> fruits = { Fruits("Pear", 100), Fruits("Banana", 300), Fruits("Pineapple", 1032), Fruits("Watermelon", 6432), Fruits("Apple", 125) };
+	std::cout << fruits;
+	quick_sort_wrapper(fruits);
+	std::cout << fruits;
+
+	std::vector<int> arr{ 8, 6, 3, 2, 4, 9, 5, 1, 7 };
 	print_arr(arr);
 	std::cout << std::endl;
 	std::cout << insertion_sort(arr);
@@ -23,7 +35,7 @@ int main() {
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	std::vector<int> data = { 1, 4, 7, 3, 9, 8, 5, 6, 2 };
+	std::vector<int> data { 8, 6, 3, 2, 4, 9, 5, 1, 7 };
 	print_arr(data);
 	std::cout << std::endl;
 	std::cout << quick_sort_wrapper(data);
@@ -31,11 +43,12 @@ int main() {
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	std::vector<int> heap = { 1, 4, 7, 3, 9, 8, 5, 6, 2 };
+	std::vector<int> heap { 8, 6, 3, 2, 4, 9, 5, 1, 7 };
 	print_arr(heap);
 	std::cout << std::endl;
 	std::cout << heap_sort_wrapper(heap);
 	print_arr(heap);
+	std::cout << std::endl;
 
 	//std::vector<size_t> lens_arr = { 1000, 2000, 3000, 4000, 5000,6000,7000,8000,9000, 10000, 25000, 50000 };
 	//int min = 1;
