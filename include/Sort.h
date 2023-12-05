@@ -5,9 +5,6 @@
 
 #include <vector>
 #include "../include/Stats.h"
-//#include "../include/Random.h"
-//#include "../include/Analytics.h"
-
 
 // сортировка вставками
 template<typename T>
@@ -17,8 +14,8 @@ Stats insertion_sort(std::vector<T>& arr) {
         return stats;
     for (size_t i = 1; i < arr.size(); ++i) {
         size_t j = i;
+        stats.comparison_count++;
         while (j != 0 && arr[j] < arr[j - 1]) {
-            stats.comparison_count++;
             std::swap(arr[j - 1], arr[j]);
             stats.copy_count+=2;
             --j;
@@ -29,25 +26,24 @@ Stats insertion_sort(std::vector<T>& arr) {
 
 
 // быстрая сортировка 
-
 template<typename T>
 int partition(std::vector<T>& arr, int low, int high, Stats& stats) {
     T pivot = arr[high];
-    int i = low - 1;
+    int ind = low;
 
-    for (size_t j = low; j <= high - 1; ++j) {
+    for (size_t i = low; i < high; ++i) {
         stats.comparison_count++;
-        if (arr[j] < pivot) {
-            ++i;
-            std::swap(arr[i], arr[j]);
-            stats.copy_count+=2;
+        if (arr[i] < pivot) {
+            stats.copy_count += 2;
+            std::swap(arr[i], arr[ind]);
+            ++ind;
         }
     }
 
-    std::swap(arr[i + 1], arr[high]);
+    std::swap(arr[ind], arr[high]);
     stats.copy_count+=2;
 
-    return i + 1;
+    return ind;
 }
 
 template<typename T>
